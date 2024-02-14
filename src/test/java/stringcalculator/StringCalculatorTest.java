@@ -1,5 +1,7 @@
 package stringcalculator;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -11,12 +13,19 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringCalculatorTest {
 
+    StringCalculator stringCalculator;
+
+    @BeforeEach
+    void setUp() {
+        stringCalculator = new StringCalculator();
+    }
+
     @ParameterizedTest
     @MethodSource("provideArguments")
     void calculate(String str, int expected) {
         //given
         //when
-        int result = StringCalculator.calculateString(str);
+        int result = stringCalculator.calculateString(str);
 
         //then
         assertThat(result).isEqualTo(expected);
@@ -29,10 +38,19 @@ public class StringCalculatorTest {
         //when
         //then
         assertThatThrownBy(() ->
-            StringCalculator.calculateString(str)
+                stringCalculator.calculateString(str)
         ).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void numberFormatException() {
+        //given
+        //when
+        //then
+        assertThatThrownBy(() ->
+                stringCalculator.calculateString("+ + 3 * 4 / 2")
+        ).isInstanceOf(NumberFormatException.class);
+    }
 
     private static Stream<Arguments> provideArguments() {
         return Stream.of(
