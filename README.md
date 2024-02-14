@@ -25,4 +25,12 @@ git checkout -b 브랜치이름
 ex) git checkout -b apply-feedback
 ```
 
-ps. fork 후 commit history 추적이 어려워 clone으로 진행
+PS. fork 후 commit history 추적이 어려워 clone으로 진행
+
+2024/02/05 ~ 2024/02/09 : </br>
+학습 테스트 및 기본 연산자 테스트 </br></br>
+2024/02/13 : </br>
+문자열 계산기 연산자 문자로 하드코딩, static 메서드를 이용하여 Util 클래스로 구현</br></br>
+2024/02/14 : </br>
+1. Util 클래스는 절차 지향적 개념 > 문자열 계산기 객체화 및 캡슐화.</br>
+2. 문자열로 된 연산자 Enum으로 변경 및 추상 메서드 이용하여 각 연산자별 연산 메서드 구현
