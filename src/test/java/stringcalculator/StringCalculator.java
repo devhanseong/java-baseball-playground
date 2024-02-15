@@ -3,16 +3,21 @@ package stringcalculator;
 
 public class StringCalculator {
 
+    private final String SEPERATOR = " ";
+    private String[] formula;
     private int result;
 
-    int calculateString(String str) {
-        String[] input = str.split(" ");
-        int length = input.length;
-        result = Integer.parseInt(input[0]);
+    public StringCalculator (String input) {
+        this.formula = input.split(SEPERATOR);
+        this.result = Integer.parseInt(formula[0]);
+    }
+
+    int calculateString() {
+        int length = formula.length;
 
         for (int  i = 1; i < length ; i += 2) {
-            Operator operator = Operator.of(input[i]);
-            result = operator.calculate(result, Integer.parseInt(input[i+1]));
+            Operator operator = OperatorFactory.of(formula[i]);
+            result = operator.calculate(result, Integer.parseInt(formula[i+1]));
         }
 
         return result;

@@ -39,12 +39,5 @@ public enum Operator {
         return this.expression.equals(inputExpression);
     }
 
-    static Operator of(String inputExpression) {
-        return Stream.of(Operator.values())
-                .filter(value -> value.equalExpression(inputExpression))
-                .findAny()
-                .orElseThrow(IllegalArgumentException::new);
-    }
-
     abstract int calculate(int x, int y);
 }
