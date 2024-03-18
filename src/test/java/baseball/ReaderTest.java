@@ -1,10 +1,13 @@
 package baseball;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.io.ByteArrayInputStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class ReaderTest {
 
@@ -36,6 +39,19 @@ public class ReaderTest {
 
         //then
         assertThat(isTrue).isFalse();
+    }
+
+    @ParameterizedTest
+    @CsvSource({"12", "1234"})
+    void readException(String input) {
+        //given
+        final Reader reader = new Reader();
+        setIn(input);
+
+        //when
+        assertThatThrownBy(() -> reader.read())
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessage("숫자 입력은 반드시 3자리여야합니다.");
     }
 
     private void setIn(String input) {

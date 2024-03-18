@@ -1,14 +1,21 @@
 package baseball;
 
+import java.util.List;
+
 public class Client {
 
-    public static void main(String[] args) {
-        final String randomNumbers = new NumberCreator().createRandomNumbers();
-        final String input = new Reader().read();
-        final boolean isTure = new Validator(randomNumbers, input).validate();
+    private static final int SUCCESS_COUNT = 3;
 
-        System.out.println(randomNumbers);
-        System.out.println(input);
-        System.out.println(isTure);
+    public static void main(String[] args) {
+        final List<Integer> randomNumbers = new NumberCreator().createRandomNumbers();
+        final Validator validator = new Validator(randomNumbers);
+
+        Score score = new Score();
+        while (score.strikes() != SUCCESS_COUNT) {
+            final String input = new Reader().read();
+            score = validator.validate(input);
+        }
+        System.out.println("3 스트라이크 게임을 종료합니다.");
     }
+
 }

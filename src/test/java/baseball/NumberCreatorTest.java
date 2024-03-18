@@ -3,6 +3,8 @@ package baseball;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class NumberCreatorTest {
@@ -14,7 +16,7 @@ public class NumberCreatorTest {
         final NumberCreator numberCreator = new NumberCreator();
 
         //when
-        final String randomNumbers = numberCreator.createRandomNumbers();
+        final List<Integer> randomNumbers = numberCreator.createRandomNumbers();
 
         //then
         assertThat(randomNumbers).hasSize(3);
