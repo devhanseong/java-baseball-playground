@@ -6,12 +6,13 @@ public class NumberCreator {
 
     private final int MIN_NUMBER = 1;
     private final int MAX_NUMBER = 9;
+    private final int NEED_SIZE = 3;
 
     public List<Integer> createRandomNumbers() {
         Random random = new Random();
         final List<Integer> numbers = new ArrayList<>();
 
-        while (numbers.size() != 3) {
+        while (numbers.size() != NEED_SIZE) {
             final int randomNumber = random.nextInt(MAX_NUMBER) + MIN_NUMBER;
             validateNumber(randomNumber);
             addRandomNumber(numbers, randomNumber);

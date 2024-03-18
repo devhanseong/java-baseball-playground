@@ -12,10 +12,9 @@ public class Validator {
 
     public Score validate(final String input) {
         Score score = new Score();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < random.size(); i++) {
             count(score, this.random, input, i);
         }
-        printScore(score);
         return score;
     }
 
@@ -30,9 +29,5 @@ public class Validator {
         if (!randomNumber.equals(inputNumber) && random.contains(inputNumber)) {
             score.increaseBall();
         }
-    }
-
-    private void printScore(final Score score) {
-        System.out.println(score.strikes() + "스트라이크 " + score.balls() + "볼");
     }
 }

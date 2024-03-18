@@ -14,8 +14,12 @@ public class Client {
         while (score.strikes() != SUCCESS_COUNT) {
             final String input = new Reader().read();
             score = validator.validate(input);
+            printScore(score);
         }
-        System.out.println("3 스트라이크 게임을 종료합니다.");
+        System.out.println("게임을 종료합니다.");
     }
 
+    private static void printScore(final Score score) {
+        System.out.println(score.strikes() + "스트라이크 " + score.balls() + "볼");
+    }
 }
