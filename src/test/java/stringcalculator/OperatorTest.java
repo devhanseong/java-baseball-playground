@@ -17,7 +17,7 @@ public class OperatorTest {
     void ofTest(String expression, Operator expected) {
         //given
         //when
-        Operator operator = OperatorFactory.of(expression);
+        Operator operator = OperatorFactory.from(expression);
 
         //then
         assertThat(operator).isEqualTo(expected);
@@ -40,7 +40,7 @@ public class OperatorTest {
         //when
         //then
         assertThatThrownBy(() ->
-                OperatorFactory.of(expression)
+                OperatorFactory.from(expression)
         ).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -48,7 +48,7 @@ public class OperatorTest {
     @MethodSource("provideCalculateTest")
     void calculateTest(String expression, int x, int y, int expected) {
         //given
-        Operator operator = OperatorFactory.of(expression);
+        Operator operator = OperatorFactory.from(expression);
 
         //when
         int result = operator.calculate(x, y);

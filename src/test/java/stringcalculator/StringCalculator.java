@@ -16,7 +16,7 @@ public class StringCalculator {
         int length = formula.length;
 
         for (int  i = 1; i < length ; i += 2) {
-            Operator operator = OperatorFactory.of(formula[i]);
+            Operator operator = OperatorFactory.from(formula[i]);
             result = operator.calculate(result, Integer.parseInt(formula[i+1]));
         }
 
