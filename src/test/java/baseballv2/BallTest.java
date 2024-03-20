@@ -12,7 +12,7 @@ public class BallTest {
         Ball ball = new Ball(0, 1);
 
         // when
-        BallStatus status = ball.play(0, 1);
+        BallStatus status = ball.play(new Ball(0, 1));
 
         // then
         assertThat(status).isEqualTo(BallStatus.STRIKE);
@@ -24,7 +24,7 @@ public class BallTest {
         Ball ball = new Ball(0, 1);
 
         // when
-        BallStatus status = ball.play(1, 1);
+        BallStatus status = ball.play(new Ball(1, 1));
 
         // then
         assertThat(status).isEqualTo(BallStatus.BALL);
@@ -36,7 +36,7 @@ public class BallTest {
         Ball ball = new Ball(0, 1);
 
         // when
-        BallStatus status = ball.play(0, 3);
+        BallStatus status = ball.play(new Ball(0, 3));
 
         // then
         assertThat(status).isEqualTo(BallStatus.NOTHING);

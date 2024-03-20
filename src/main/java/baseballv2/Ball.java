@@ -12,8 +12,7 @@ public class Ball {
         this.number = number;
     }
 
-    public BallStatus play(int index, int number) {
-        Ball userBall = new Ball(index, number);
+    public BallStatus play(Ball userBall) {
         if (this.equals(userBall)) {
             return BallStatus.STRIKE;
         }
