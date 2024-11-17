@@ -24,9 +24,13 @@ public enum OperatorType {
 
     public static OperatorType from(String userOperation) {
         return Arrays.stream(values())
-                .filter(each -> each.operation.equals(userOperation))
+                .filter(each -> each.isSameOperation(userOperation))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("지원하지 않는 연산자입니다."));
+    }
+
+    private boolean isSameOperation(String userOperation) {
+        return this.operation.equals(userOperation);
     }
 
 }
