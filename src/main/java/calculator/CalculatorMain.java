@@ -2,6 +2,7 @@ package calculator;
 
 import calculator.io.InputHandler;
 import calculator.io.OutputHandler;
+import calculator.util.StringParser;
 
 public class CalculatorMain {
 
@@ -10,7 +11,10 @@ public class CalculatorMain {
 
     public static void main(String[] args) {
         String userInput = inputHandler.getUserInput();
-        outputHandler.print(userInput);
+        String[] expression = StringParser.split(userInput, " ");
+        Calculator calculator = Calculator.from(expression);
+        int result = calculator.calculate();
+        outputHandler.print(result);
     }
 
 }
